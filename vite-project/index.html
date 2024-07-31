@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,64 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <header><h1 class="header-title">TODO LIST</h1></header>
+      <main>
+        <section class="projects-bar">
+          <button class="projects-bar-add">+ New Project</button>
+          <h1 class="projects-bar-title">Projects:</h1>
+          <ul class="projects-bar-list"></ul>
+          <form class="projects-form">
+            <input
+              type="text"
+              placeholder="My project"
+              class="projects-form-input"
+            />
+            <div>
+              <button class="projects-form-add-btn projects-form-btn">
+                Add
+              </button>
+              <button class="projects-form-cancel-btn projects-form-btn">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </section>
+        <section class="todos-bar">
+          <button class="todos-bar-add">+ New todo</button>
+          <h1 class="todos-bar-title">Todos:</h1>
+          <ul class="todos-bar-list"></ul>
+          <form class="todos-bar-form">
+            <div class="todos-bar-form-div">
+              <div class="todos-bar-form-title-div">
+                <label for="Title">Title:</label>
+                <input
+                  type="text"
+                  class="todos-bar-form-title-input"
+                  for="title"
+                  placeholder="My todo"
+                />
+              </div>
+              <div class="todos-bar-form-date-div">
+                <label for="date">Date:</label>
+                <input
+                  type="date"
+                  class="todos-bar-form-date-input"
+                  for="date"
+                  name="date"
+                />
+              </div>
+            </div>
+            <div class="todos-form-buttons">
+              <button class="todos-form-add-btn todos-form-btn">Add</button>
+              <button class="todos-form-cancel-btn todos-form-btn">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
