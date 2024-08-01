@@ -177,3 +177,32 @@ main {
   justify-content: space-between;
   margin-top: 1rem;
 }
+
+.projects-bar-list {
+  list-style: none;
+  padding: 0;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-list-item:hover {
+  background-color: #e67a7a;
+  cursor: pointer;
+}
+
+.project-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.project-list-item-icon {
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+}
