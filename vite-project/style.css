@@ -206,3 +206,65 @@ main {
   width: 2rem;
   cursor: pointer;
 }
+
+.todos-bar-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.todo-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.todo-item {
+  display: flex;
+  font-size: 3rem;
+  gap: 1rem;
+}
+
+.todo-item p {
+  margin: 0;
+}
+
+.todo-p1 {
+  font-weight: 700;
+}
+
+.todo-checkbox {
+  width: 3rem;
+  height: 3rem;
+}
+
+.todo-buttons button {
+  font-size: 2.2rem;
+  border-radius: 1rem;
+}
+
+.todo-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.todo-edit-btn {
+  background-color: #ffe176;
+  border: 1px solid #ffd43b;
+  padding: 1rem 2rem;
+}
+
+.todo-edit-btn:hover {
+  cursor: pointer;
+  background-color: #e4c862;
+}
+
+.todo-delete-btn {
+  border: 1px solid #eeadad;
+  background-color: #ffbebe;
+}
+
+.todo-delete-btn:hover {
+  cursor: pointer;
+  background-color: #dd9797;
+}
