@@ -1,3 +1,6 @@
+const projectList = document.querySelector(".projects-bar-list");
+const todoList = document.querySelector(".todos-bar-list");
+
 export class Todo {
   id;
   name;
@@ -65,7 +68,7 @@ export class Project {
         <button class="todo-edit-btn">edit</button>
         <button class="todo-delete-btn">delete</button>
         </div>
-        <input type="checkbox" class="todo-checkbox">
+        <input type="checkbox" class="todo-checkbox" >
         </li>`;
       }
       todoList.insertAdjacentHTML("afterbegin", html);

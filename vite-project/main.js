@@ -111,7 +111,28 @@ todoList.addEventListener("click", function (event) {
     projectManager.clickedProject.renderTodos();
 
     if (currentTodo.isEditing) {
+      const editTodoTitle = document.querySelector(".todo-edit-title");
+      editTodoTitle.addEventListener("change", function (event) {
+        currentTodo.name = event.target.value;
+      });
+      const editTodoDate = document.querySelector(".todo-edit-date");
+      editTodoDate.addEventListener("click", function (event) {
+        currentTodo.date = event.target.value;
+      });
     }
+  }
+
+  //checking
+  if (event.target.classList.contains(".todo-checkbox")) {
+    const todoCheckbox = document.querySelector(".todo-checkbox");
+    const li = event.target.closest("li");
+    const id = li.id;
+    const currentTodo = projectManager.clickedProject.todos.find(
+      (todo) => todo.id === id
+    );
+    todoCheckbox.addEventListener("change", function (event) {
+      currentTodo.isChecked = event.target.checked;
+    });
   }
 });
 
