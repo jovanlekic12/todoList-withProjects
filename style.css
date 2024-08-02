@@ -92,7 +92,9 @@ main {
   font-size: 2.25rem;
 }
 
-.todos-bar-form input {
+.todos-bar-form input,
+.todo-edit-title,
+.todo-edit-date {
   padding: 1rem 2rem;
   font-size: 1.6rem;
   border-radius: 0.5rem;
