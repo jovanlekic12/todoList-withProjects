@@ -44,6 +44,9 @@ class Project {
   addTodo(todo) {
     this.todos.push(todo);
   }
+  deleteTodo(id) {
+    this.todos = this.todos.filter((todo) => todo.id !== id);
+  }
   renderTodos() {
     todoList.innerHTML = "";
     this.todos.forEach((todo) => {
@@ -76,6 +79,9 @@ class ProjectManager {
   }
   addProject(project) {
     this.projects.push(project);
+  }
+  deleteProject(id) {
+    this.projects = this.projects.filter((project) => project.id !== id);
   }
   renderProjects() {
     projectList.innerHTML = "";
@@ -150,6 +156,24 @@ projectList.addEventListener("click", function (event) {
     );
     projectManager.clickedProject.renderTodos();
     console.log(projectManager);
+  }
+
+  //deleting
+  if (event.target.classList.contains("project-list-item-icon")) {
+    const li = event.target.closest("li");
+    const id = li.id;
+    projectManager.deleteProject(id);
+    li.remove();
+  }
+});
+
+todoList.addEventListener("click", function (event) {
+  //deleteing
+  if (event.target.classList.contains("todo-delete-btn")) {
+    const li = event.target.closest("li");
+    const id = li.id;
+    projectManager.clickedProject.deleteTodo(id);
+    li.remove();
   }
 });
 
