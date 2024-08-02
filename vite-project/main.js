@@ -1,7 +1,7 @@
 "use strict";
 
 import "./style.css";
-
+import { Todo, Project, ProjectManager } from "./classes";
 const newProjectBtn = document.querySelector(".projects-bar-add");
 const projectCancelBtn = document.querySelector(".projects-form-cancel-btn");
 const projectInput = document.querySelector(".projects-form-input");
@@ -16,86 +16,6 @@ const todoDateInput = document.querySelector(".todos-bar-form-date-input");
 let todoName;
 let todoDate;
 let projectName;
-
-class Todo {
-  id;
-  name;
-  date;
-  isEditing;
-  isChecked;
-  constructor(name, date) {
-    this.id = self.crypto.randomUUID();
-    this.name = name;
-    this.date = date;
-    this.isEditing = false;
-    this.isChecked = false;
-  }
-}
-
-class Project {
-  id;
-  title;
-  todos;
-  constructor(title) {
-    this.id = self.crypto.randomUUID();
-    this.title = title;
-    this.todos = [];
-  }
-  addTodo(todo) {
-    this.todos.push(todo);
-  }
-  deleteTodo(id) {
-    this.todos = this.todos.filter((todo) => todo.id !== id);
-  }
-  renderTodos() {
-    todoList.innerHTML = "";
-    this.todos.forEach((todo) => {
-      const html = `<li class="todo-list-item" id="${todo.id}">
-      <div class="todo-item">
-      <p class="todo-p1">Title:</p>
-      <p class="todo-p2">${todo.name}
-      </div>
-      <div class="todo-item">
-      <p class="todo-p1">Date:</p>
-      <p class="todo-p2">${todo.date}</p>
-      </div>
-      <div class="todo-buttons">
-      <button class="todo-edit-btn">edit</button>
-      <button class="todo-delete-btn">delete</button>
-      </div>
-      <input type="checkbox" class="todo-checkbox">
-      </li>`;
-      todoList.insertAdjacentHTML("afterbegin", html);
-    });
-  }
-}
-
-class ProjectManager {
-  clickedProject;
-  projects;
-  constructor() {
-    this.projects = [];
-    this.clickedProject = null;
-  }
-  addProject(project) {
-    this.projects.push(project);
-  }
-  deleteProject(id) {
-    this.projects = this.projects.filter((project) => project.id !== id);
-  }
-  renderProjects() {
-    projectList.innerHTML = "";
-    this.projects.forEach((project) => {
-      const html = `<li class="project-list-item" id="${project.id}">
-      <h1 class="project-list-title">${project.title}</h1>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="project-list-item-icon" viewBox="0 0 16 16">
-      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-      </svg>
-      </li>`;
-      projectList.insertAdjacentHTML("afterbegin", html);
-    });
-  }
-}
 
 const projectManager = new ProjectManager();
 
@@ -168,12 +88,30 @@ projectList.addEventListener("click", function (event) {
 });
 
 todoList.addEventListener("click", function (event) {
-  //deleteing
+  //deleting
   if (event.target.classList.contains("todo-delete-btn")) {
     const li = event.target.closest("li");
     const id = li.id;
     projectManager.clickedProject.deleteTodo(id);
     li.remove();
+  }
+
+  //editing
+  if (event.target.classList.contains("todo-edit-btn")) {
+    const li = event.target.closest("li");
+    const id = li.id;
+    const currentTodo = projectManager.clickedProject.todos.find(
+      (todo) => todo.id === id
+    );
+    const restOfTodos = projectManager.clickedProject.todos.filter(
+      (todo) => todo.id !== id
+    );
+    restOfTodos.forEach((todo) => (todo.isEditing = false));
+    currentTodo.changeIsEdit();
+    projectManager.clickedProject.renderTodos();
+
+    if (currentTodo.isEditing) {
+    }
   }
 });
 
