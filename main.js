@@ -122,7 +122,7 @@ todoList.addEventListener("click", function (event) {
     }
   }
 
-  //checking
+  //checkbox
   if (event.target.classList.contains(".todo-checkbox")) {
     const todoCheckbox = document.querySelector(".todo-checkbox");
     const li = event.target.closest("li");
