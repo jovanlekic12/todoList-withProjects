@@ -213,12 +213,22 @@ main {
   list-style: none;
   padding: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .todo-list-item {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding: 1rem 2rem;
+}
+
+.todo-list-item:hover {
+  cursor: pointer;
+  background-color: #e67a7a;
+  border-radius: 1rem;
 }
 
 .todo-item {
@@ -269,4 +279,8 @@ main {
 .todo-delete-btn:hover {
   cursor: pointer;
   background-color: #dd9797;
+}
+
+.active {
+  background-color: #e67a7a;
 }

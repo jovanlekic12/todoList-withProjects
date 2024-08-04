@@ -54,7 +54,6 @@ todoForm.addEventListener("submit", function (event) {
   todoTitleInput.value = "";
   todoDateInput.value = "";
   todoForm.classList.add("hidden");
-  console.log(projectManager);
 });
 
 projectForm.addEventListener("submit", function (event) {
@@ -62,20 +61,23 @@ projectForm.addEventListener("submit", function (event) {
   projectManager.addProject(new Project(projectName));
   projectManager.renderProjects();
   projectInput.value = "";
-  console.log(projectManager);
   projectForm.classList.add("hidden");
 });
 
 //Lists:
 projectList.addEventListener("click", function (event) {
+  //selecting
   if (event.target.classList.contains("project-list-item")) {
+    if (!todoForm.classList.contains("hidden")) {
+      todoForm.classList.add("hidden");
+    }
     const li = event.target.closest("li");
     const id = li.id;
+    li.classList.add("active");
     projectManager.clickedProject = projectManager.projects.find(
       (project) => project.id === id
     );
     projectManager.clickedProject.renderTodos();
-    console.log(projectManager);
   }
 
   //deleting
@@ -83,6 +85,7 @@ projectList.addEventListener("click", function (event) {
     const li = event.target.closest("li");
     const id = li.id;
     projectManager.deleteProject(id);
+    todoList.innerHTML = "";
     li.remove();
   }
 });
@@ -123,7 +126,7 @@ todoList.addEventListener("click", function (event) {
   }
 
   //checkbox
-  if (event.target.classList.contains(".todo-checkbox")) {
+  if (event.target.classList.contains("todo-checkbox")) {
     const todoCheckbox = document.querySelector(".todo-checkbox");
     const li = event.target.closest("li");
     const id = li.id;

@@ -68,7 +68,9 @@ export class Project {
         <button class="todo-edit-btn">edit</button>
         <button class="todo-delete-btn">delete</button>
         </div>
-        <input type="checkbox" class="todo-checkbox" >
+        <input type="checkbox" class="todo-checkbox" ${
+          todo.isChecked && "checked"
+        }/>
         </li>`;
       }
       todoList.insertAdjacentHTML("afterbegin", html);
